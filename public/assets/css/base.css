@@ -933,6 +933,10 @@ footer {
 .reveal.delay-3 { transition-delay: .3s; }
 
 /* Responsive */
+@media (max-width: 500px) {
+   .scroll-indicator { top: 100px; }
+}
+
 @media (max-width: 900px) {
   .container,
   .hero__inner { width: min(calc(100% - 32px), var(--max)); }
