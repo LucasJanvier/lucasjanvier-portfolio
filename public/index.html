@@ -3,16 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="lucasjanvier — Creative Portfolio">
-  <title>lucasjanvier — Creative Portfolio</title>
+  <title>lucasjanvier — Portfolio</title>
+  <meta name="description" content="Portfolio van Lucas Janvier — student Integrale Veiligheidskunde en 3D-modelleur.">
+  <meta name="theme-color" content="#f5f5f3">
+
+  <!-- Open Graph (vul og:image en og:url aan zodra de site online staat) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="lucasjanvier — Portfolio">
+  <meta property="og:description" content="Student Integrale Veiligheidskunde en 3D-modelleur.">
+  <meta property="og:image" content="assets/images/lucasjanvier.png">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23111'/%3E%3Ctext x='50' y='68' font-size='60' font-family='Arial' font-weight='700' text-anchor='middle' fill='%23fff'%3El%3C/text%3E%3C/svg%3E">
+  <!-- Lettertypes voor de loader (alleen de letters van "lucasjanvier" worden geladen) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Bebas+Neue&family=Pacifico&family=Space+Mono&family=Abril+Fatface&family=Lobster&family=Orbitron&family=Permanent+Marker&family=Cinzel&family=Righteous&family=Dancing+Script&family=Press+Start+2P&family=Anton&family=Caveat&family=Monoton&family=Special+Elite&family=Bungee&family=Syncopate&family=DM+Serif+Display&family=Archivo+Black&text=lucasjanvier&display=block">
+
   <link rel="stylesheet" href="assets/css/base.css">
 </head>
-<body>
+<body class="is-loading">
+  <!-- Voortgangsbalk + custom cursor -->
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
   <!-- Loading screen -->
-  <div class="loader" id="loader" aria-label="Website laden">
+  <div class="loader" id="loader" role="status" aria-label="Website laden">
     <div class="loader__inner">
-      <span class="loader__brand">lucasjanvier</span>
-      <div class="loader__bar"></div>
+      <div class="loader__stage" id="loaderStage">
+        <div class="loader__slide">
+          <span class="loader__brand" id="loaderBrand" aria-hidden="true">lucasjanvier</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -21,34 +42,40 @@
     <nav class="nav container" aria-label="Hoofdnavigatie">
       <a class="brand" href="#home" aria-label="lucasjanvier home">lucasjanvier</a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu openen" aria-expanded="false">
-        <span></span>
-      </button>
-
       <ul class="nav__links" id="navLinks">
         <li><a class="nav-link active" href="#home">Home</a></li>
         <li><a class="nav-link" href="#over-mij">Over mij</a></li>
-        <li><a class="nav-link" href="#creaties">Diensten</a></li>
-        <li><a class="nav-link" href="#contact">Contact </a></li>
+        <li><a class="nav-link" href="#diensten">Diensten</a></li>
+        <li><a class="nav-link" href="#projecten">Projecten</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
       </ul>
+
+      <div class="nav__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Wissel tussen licht en donker thema" title="Thema wisselen">
+          <span class="theme-toggle__dot"></span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks">
+          <span></span>
+        </button>
+      </div>
     </nav>
   </header>
 
-  <main>
+  <main id="main">
     <!-- Home -->
     <section class="hero" id="home">
       <div class="hero__inner">
         <div class="hero__meta">
-          <span>Portfolio</span>
-          <span>2026</span>
+          <span class="hero__status">Beschrhijving</span>
+          <span>Portfolio — 2026</span>
         </div>
         <h1 class="hero__title"><span>lucasjanvier</span></h1>
-        <p class="hero__subtitle">Subtitle</p>
+        <p class="hero__subtitle">Beschrhijving</p>
       </div>
-      <div class="scroll-indicator" aria-hidden="true">Scroll to explore</div>
+      <div class="scroll-indicator" aria-hidden="true">Scroll</div>
     </section>
 
-    <!-- Over Mij-->
+    <!-- Over mij -->
     <section class="section" id="over-mij">
       <div class="container">
         <div class="section__head reveal">
@@ -56,80 +83,97 @@
         </div>
 
         <div class="about__grid">
-          <div class="about__portrait reveal delay-1" aria-label="Abstract portret">
-            <img class="about_image" src="assets/images/lucasjanvier.png" alt="lucasjanvier">
+          <div class="about__portrait reveal delay-1">
+            <img class="about__image" src="assets/images/lucasjanvier.png" alt="Portret van Lucas Janvier" width="800" height="1000" loading="lazy">
           </div>
 
           <div class="about__copy">
             <div class="reveal delay-2">
-              <h3>Title</h3>
+              <h3>Webdesign en Veiligheid</h3>
               <p>Beschrijving</p>
-    
             </div>
+
             <div class="about__facts reveal delay-3">
-              <div class="fact"><span>Geboren</span><span>28 September 2006</span></div>
               <div class="fact"><span>Studie</span><span>Integrale Veiligheidskunde HBO</span></div>
               <div class="fact"><span>Wonend</span><span>Gelderland, Nederland</span></div>
+              <!-- <div class="fact">
+                <span>Tools</span>
+                <span class="tags">
+                  <span class="tag">Blender</span>
+                  <span class="tag">Git</span>
+                  <span class="tag">HTML / CSS / JS</span>
+                </span>
+              </div> -->
             </div>
+
+            <a class="cta-link reveal delay-3" href="#contact" download>
+              <span>Neem contact op</span>
+              <strong aria-hidden="true">↓</strong>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Diensten -->
-    <section class="section" id="creaties">
+    <section class="section" id="diensten">
       <div class="container">
         <div class="section__head reveal">
           <div class="eyebrow">02 — Diensten</div>
         </div>
+
+        <ol class="services">
+          <li class="service reveal delay-1">
+            <span class="service__num">01</span>
+            <h3 class="service__title">Webdesign</h3>
+            <p class="service__text">Website's voor zelfstandige en kleine bedrijven.</p>
+            <span class="service__arrow" aria-hidden="true">↗</span>
+          </li>
+          <li class="service reveal delay-2">
+            <span class="service__num">02</span>
+            <h3 class="service__title">Veiligheidskunde</h3>
+            <p class="service__text">Voor stagebedrijven en organisaties, <br> zoekend zijn naar junior veiligheidskundigen.</p>
+            <span class="service__arrow" aria-hidden="true">↗</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Projecten -->
+    <section class="section" id="projecten">
+      <div class="container">
+        <div class="section__head reveal">
+          <div class="eyebrow">03 — Projecten</div>
+        </div>
+
         <div class="work__grid">
           <article class="project reveal">
-            <a href="#contact" aria-label="Bekijk project North Studio">
+            <a href="#contact" aria-label="Bekijk project lucasjanvier">
               <div class="project__visual">
-                <img>
+                <div class="project__placeholder"></div>
                 <div class="project__overlay"><span class="project__arrow">↗</span></div>
               </div>
               <div class="project__info">
-                <div><div class="project__name">lucasjanvier</div><div class="project__category">Portfolio</div></div>
+                <div>
+                  <div class="project__name">lucasjanvier</div>
+                  <div class="project__category">Portfolio</div>
+                </div>
                 <div class="project__year">2026</div>
               </div>
             </a>
           </article>
-
-          <article class="project reveal delay-1">
-            <a href="#contact" aria-label="Bekijk project Form">
+          <!-- <article class="project reveal delay-1">
+            <a href="#contact" aria-label="Bekijk project Project Title">
               <div class="project__visual">
-                <img>
+                <div class="project__placeholder project__placeholder--alt"></div>
                 <div class="project__overlay"><span class="project__arrow">↗</span></div>
               </div>
               <div class="project__info">
-                <div><div class="project__name">Project Title</div><div class="project__category">Project Type</div></div>
-                <div class="project__year">Build Year</div>
-              </div>
-            </a>
-          </article>
-          <!-- <article class="project reveal delay-2">
-            <a href="#contact" aria-label="Bekijk project Mono">
-              <div class="project__visual">
-                <img>
-                <div class="project__overlay"><span class="project__arrow">↗</span></div>
-              </div>
-              <div class="project__info">
-                <div><div class="project__name">Mono</div><div class="project__category">Campaign / Graphic design</div></div>
-                <div class="project__year">2025</div>
-              </div>
-            </a>
-          </article>
-
-          <article class="project reveal delay-1">
-            <a href="#contact" aria-label="Bekijk project Still">
-              <div class="project__visual">
-                <img>
-                <div class="project__overlay"><span class="project__arrow">↗</span></div>
-              </div>
-              <div class="project__info">
-                <div><div class="project__name">Still</div><div class="project__category">Visual system / Editorial</div></div>
-                <div class="project__year">2024</div>
+                <div>
+                  <div class="project__name">Project Title</div>
+                  <div class="project__category">Project Type</div>
+                </div>
+                <div class="project__year">Jaar</div>
               </div>
             </a>
           </article> -->
@@ -137,93 +181,53 @@
       </div>
     </section>
 
-    <section>
-        <!-- CAROUSEL -->
-        <div>
-        <div class="contact__marquee">
-
-            <div class="contact__marquee-track">
-                <span>LUCASJANVIER</span>
-                <span>✦</span>
-                <span>LUCASJANVIER</span>
-                <span>✦</span>
-                <span>LUCASJANVIER</span>
-                <span>✦</span>
-                <span>LUCASJANVIER</span>
-                <span>✦</span>
-
-                <span>LUCASJANVIER</span>
-                <span>✦</span>
-                <span>LUCASJANVIER</span>
-                <span>✦</span>
-                <span>LUCASJANVIER</span>
-                <span>✦</span>
-                <span>LUCASJANVIER</span>
-                <span>✦</span>
-            </div>
+    <!-- Marquee -->
+    <section class="marquee-section" aria-hidden="true">
+      <div class="contact__marquee">
+        <div class="contact__marquee-track">
+          <div class="contact__marquee-group">
+            <span>LUCASJANVIER</span><span>✦</span>
+            <span>LUCASJANVIER</span><span>✦</span>
+            <span>LUCASJANVIER</span><span>✦</span>
+            <span>LUCASJANVIER</span><span>✦</span>
+          </div>
+          <div class="contact__marquee-group">
+            <span>LUCASJANVIER</span><span>✦</span>
+            <span>LUCASJANVIER</span><span>✦</span>
+            <span>LUCASJANVIER</span><span>✦</span>
+            <span>LUCASJANVIER</span><span>✦</span>
+          </div>
         </div>
-        </div>
-    </div>
+      </div>
     </section>
 
     <!-- Contact -->
     <section class="section contact" id="contact">
-    <div class="container">
-
+      <div class="container">
         <div class="contact__grid">
+          <div class="contact__main reveal">
+            <div class="eyebrow">04 — Contact</div>
+            <h2 class="contact__title">Heb je<br>iets in<br>gedachten?</h2>
+          </div>
 
-        <!-- Left -->
-        <div class="contact__main reveal">
-            <div class="eyebrow">03 — Contact</div>
-
-            <h2 class="contact__title">
-            Heb je<br>
-            iets in<br>
-            gedachten?
-            </h2>
-        </div>
-
-        <!-- Right -->
-        <div class="contact__side reveal delay-1">
-
-            <a
-            class="contact__email"
-            href="mailto:lbj.janvier@icloud.com"
-            >
-            lbj.janvier@icloud.com
-            </a>
+          <div class="contact__side reveal delay-1">
+            <a class="contact__email" href="mailto:lbj.janvier@icloud.com">lbj.janvier@icloud.com</a>
 
             <div class="contact__socials">
-            <a
-                href="https://instagram.com/"
-                target="_blank"
-                rel="noopener"
-            >
-                Instagram
-            </a>
-
-            <a
-                href="https://linkedin.com/"
-                target="_blank"
-                rel="noopener"
-            >
-                LinkedIn
-            </a>
+              <a href="https://www.instagram.com/lucasjanvier_/" target="_blank" rel="noopener">Instagram</a>
+              <a href="https://www.linkedin.com/in/lucas-janvier-3a6b64247" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://github.com/LucasJanvier/" target="_blank" rel="noopener">Github</a>
             </div>
 
             <div class="contact__line"></div>
 
-            <a
-            class="contact__arrow"
-            href="mailto:hello@lucasjanvier.nl"
-            aria-label="Stuur een e-mail"
-            >
-            <span>Stuur een bericht</span>
-            <strong>↗</strong>
+            <a class="contact__arrow" href="mailto:lbj.janvier@icloud.com" aria-label="Stuur een e-mail">
+              <span>Stuur een bericht</span>
+              <strong>↗</strong>
             </a>
-
+          </div>
         </div>
-        </div>
+      </div>
     </section>
   </main>
 
@@ -233,18 +237,19 @@
       <div class="footer__top">
         <div class="footer__brand">lucasjanvier</div>
         <div class="footer__links">
-          <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:hello@lucasjanvier.nl">E-mail</a>
+          <a href="https://www.instagram.com/lucasjanvier_/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.linkedin.com/in/lucas-janvier-3a6b64247" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/LucasJanvier/" target="_blank" rel="noopener">Github</a>
+          <a href="#home" class="to-top">Terug naar boven ↑</a>
         </div>
       </div>
       <div class="footer__bottom">
-        <span>Copyright © 2026 lucasjanvier</span>
-
+        <span>Copyright © <span id="year">2026</span> lucasjanvier</span>
         <span>Portfolio</span>
       </div>
     </div>
   </footer>
+
   <script src="./assets/js/base.js"></script>
 </body>
 </html>
